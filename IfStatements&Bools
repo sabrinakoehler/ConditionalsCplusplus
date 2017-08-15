@@ -1,0 +1,546 @@
+///////////////////////////////////////
+//Problem 7.1.1 Using bool
+//Write code to assign true to isTeenager if 
+//kidAge is 13 to 19 inclusive
+
+#include <iostream>
+using namespace std;
+
+int main() {
+   bool isTeenager = false;
+   int kidAge = 0;
+
+   kidAge = 13;
+
+   if ((kidAge >= 13) && (kidAge <= 19))
+{
+   isTeenager = true;
+}
+
+   if (isTeenager) {
+      cout << "Teen" << endl;
+   }
+   else {
+      cout << "Not teen" << endl;
+   }
+
+   return 0;
+
+///////////////////////////////////////
+//Problem 7.1.2 Bool in branching
+//Write an if-else statement to describe an
+//object. Print "Balloon" if isBalloon is true
+//and isRed is false. Print "Red balloon"
+//if isBalloon and isRed are both true.
+//Print "Not a balloon" otherwise. End w/ new line. 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+   bool isRed = false;
+   bool isBalloon = false;
+
+   if ((isBalloon == true) && (isRed == false)) {
+      cout << "Balloon" << endl;
+   }
+   if ((isBalloon == true) && (isRed == true)) {
+      cout << "Red balloon" << endl;
+   }
+   if ((isBalloon == false) && (isRed == false)) {
+      cout <<"Not a balloon" << endl;
+   }
+   if ((isBalloon == false) && (isRed == true)) {
+      cout << "Not a balloon" << endl;
+   }
+
+
+   return 0;
+}
+//////////////////////////////////////
+7.2.1 String equality example: Censoring
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string userWord;
+
+   cout << "Enter a word: ";                     //Enter a word: Sally
+   cin  >> userWord;                             //Sally
+
+   if (userWord == "Voldemort") {                //Enter a word: Voldemort
+      cout << "He who must not be named";        //He who must not be named
+   }
+   else {
+      cout << userWord;                          //Enter a word: voldemort
+   }                                             //voldemort
+   cout << endl;
+
+   return 0;
+}
+/////////////////////////////////////////////
+7.2.1 String comparison: Detect word
+//Write an if-else statement that prints "Goodbye" if userString is "Quit",
+//else prints "Hello". End with newline.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string userString;
+
+   userString = "Quit";
+
+   if (userString == "Quit") {
+      cout << "Goodbye" << endl;
+   }
+   else {
+      cout << "Hello" << endl;
+   }
+
+   return 0;
+}
+/////////////////////////////////////////////
+7.2.2 Print two strings in alphabetical order
+//Print two strings in alphabetical order. Assume the strings are lowercase.
+//End with newline.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string firstString;
+   string secondString;
+
+   firstString = "rabbits";
+   secondString = "capes";
+
+   if (firstString > secondString) {
+      cout << secondString << " " << firstString << endl;
+   }
+   if (secondString > firstString) {
+      cout << firstString << " " << secondString << endl;
+   }
+   if (firstString == secondString) {
+      cout << firstString << " " << secondString << endl;
+   }
+
+   return 0;
+}
+
+
+//////////////////////////////////////////////
+7.3.1 String character access: word scramble zybook example
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string word1;
+   string word2;
+   
+   cout << "Enter word (>= 5 letters): ";      //Enter word (>= 5 letters): forest
+   cin  >> word1;
+   
+   word2 = word1;
+   
+   cout << "Size: " << word1.size() << endl;   //Size: 6
+   // Note: Error if word1 has < 5 letters
+   
+   word2.at(0) = word1.at(3);
+   word2.at(1) = word1.at(4);
+   word2.at(2) = word1.at(1);
+   word2.at(3) = word1.at(0);
+   word2.at(4) = word1.at(2);
+   
+   cout << "Original:  " << word1 << endl;      //Original: forest
+   cout << "Scrambled: " << word2 << endl;      //Scrambled: esofrt
+   
+   return 0;
+}
+/////////////////////////////////////////////
+7.3.1 String library functions
+//Assign the size of userInput to stringSize. Ex: if userInput="Hello",
+//output is:
+//Size of userInput: 5
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string userInput;
+   int stringSize = 0;
+
+   userInput = "Hello";
+  
+   cin  >> userInput;
+   
+   stringSize = userInput.length();
+
+
+   cout << "Size of userInput: " << stringSize << endl;
+
+   return 0;
+}
+/////////////////////////////////////////////
+7.3.2 Looking for characters
+//Write an expression to detect that the first character of 
+//userInput matches firstLetter
+
+#include <string>
+using namespace std;
+
+int main() {
+   string userInput;
+   char firstLetter = '-';
+
+   userInput = "banana";
+   firstLetter = 'b';
+
+   if (userInput.at(0) == firstLetter) {
+      cout << "Found match: " << firstLetter << endl;
+   }
+   else {
+      cout << "No match: " << firstLetter << endl;
+   }
+
+   return 0;
+}
+/////////////////////////////////////////////
+7.3.3: Using find()
+//Print "Censored" if userInput contains the word "darn", else print userInput.
+//End with newline.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string userInput;
+
+   userInput = "That darn cat.";
+
+   if (userInput.find("darn") != -1) { 
+      cout << "Censored" << endl;
+   }
+   else {
+      cout << userInput << endl;
+   }
+
+   return 0;
+}
+
+
+/////////////////////////////////////////////
+
+7.4.1 String modify example: Greeting
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string userName;
+   string greetingText;
+   int    itemIndex = 0;
+
+   cout << "Enter name: ";
+   getline(cin, userName);
+
+   // Combine strings using +
+   greetingText = "Hello " + userName;
+
+   // Append a period (could have used +)
+   greetingText.push_back('.'); // '' not ""
+   cout << greetingText << endl;
+
+   // Insert Mr/Ms before user's name
+   greetingText.insert(6, "Mr/Ms ");
+   cout << greetingText << endl;
+
+   // Remove the ending period
+   greetingText.resize(greetingText.size() - 1);
+   cout << greetingText << endl;
+
+   // Replace occurrence of "Darn" by "@$#"
+   itemIndex = greetingText.find("Darn");
+   if (itemIndex >= 0) { // Found
+      greetingText.replace(itemIndex, 4, "@#$");
+   }
+   cout << greetingText << endl;
+
+   return 0;
+}
+////////////////////////////////////////////
+7.4.1 Combining strings
+//Retype and correct the code provided to combine two strings
+//separated by a space. Hint: What type of parameter does
+//push_back expect?
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string secretID = "Barry";
+   string lastName = "Allen";
+   char spaceChar = ' ';
+
+   secretID.push_back(spaceChar);
+   secretID.append(lastName);
+
+   cout << secretID << endl;
+   return 0;
+}
+////////////////////////////////////////////
+7.4.2: Name song.
+//Modify secondVerse to play "The Name Game", by replacing "(Name)" with 
+//userName but without the first letter.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string secondVerse = "Banana-fana fo-f(Name)!";
+   string userName = "Katie";
+
+   userName.erase(userName.begin()); // Removes first char from userName
+
+   secondVerse.replace(16,6,userName);   //replace function modifies secondVerse 
+                                        //so whatever userinput (name) is, the string is modified to say "Banana-fana-(f)Name!"
+   cout << secondVerse << endl;
+
+   return 0;
+}
+
+////////////////////////////////////////////
+7.5.1: String with digit.
+Set hasDigit to true if the 3-character passCode contains a digit.
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+   bool hasDigit = false;
+   string passCode;
+   int valid = 0;
+
+   passCode = "abc";
+
+   hasDigit = isdigit(passCode[0]) || isdigit(passCode[1]) || isdigit(passCode[2]);
+  
+   if (hasDigit) {
+      cout << "Has a digit." << endl;
+   }
+   else {
+      cout << "Has no digit." << endl;
+   }
+
+   return 0;
+}
+
+
+////////////////////////////////////////////
+7.5.2:Whitespace replace.
+//Replace any space ' ' by '_' in 2-character string passCode.
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+   string passCode;
+
+   passCode = "1 ";
+
+   if (passCode.at(0) == ' ') {
+      passCode.replace(0, 1, "_");
+   }
+   
+   if (passCode.at(1) == ' ') {
+      passCode.replace(1, 1, "_");
+   } 
+   
+   cout << passCode << endl;
+   return 0;
+}
+////TWO METHODS
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+   string passCode;
+
+   passCode = "1 ";
+
+   if (isspace(passCode[0]) != 0) {
+      passCode.replace(0, 1, "_");
+   }
+   
+   if (isspace(passCode[1]) != 0) {
+      passCode.replace(1, 1, "_");
+   } 
+   
+   cout << passCode << endl;
+   return 0;
+}
+
+////////////////////////////////////////////
+7.6.1: Floating-point comparison: Print Equal or Not equal.
+//Write an expresson that will cause the following code to print "Equa1" if the value
+//of sensorReading is "close enough" to targetValue. Otherwise, print "Not equal".
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+   double targetValue = 0.3333;
+   double sensorReading = 0.0;
+
+   sensorReading = 1.0/3.0;
+
+   if (fabs(sensorReading-targetValue) < .0001 ) {
+      cout << "Equal" << endl;
+   }
+   else {
+      cout << "Not equal" << endl;
+   }
+
+   return 0;
+}
+
+////////////////////////////////////////////
+7.7.1: Problem 7.1
+Ask the user for a number. If the number is less than 100, then display the number times 22. 
+If the number is more than 100, then display the number divided by 22.
+Otherwise, just display the number. Use only integers.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+   int numUser = 0;
+   
+   cout << "Enter a number: ";
+   cin >> numUser;
+   cout << numUser;
+   cout << endl;
+
+
+      if (numUser <= 99) {
+      cout << numUser * 22;
+      cout << endl;
+      
+      }
+
+      if (numUser > 100) {
+      cout << (numUser / 22);
+      cout << endl;
+      
+      }
+   
+      if (numUser == 100) {
+      cout << numUser;
+      cout << endl;
+      
+      }
+
+   return 0;
+}
+////////////////////////////////////////////
+7.8 Problem 7.1
+//Prompt the user to enter a string as follows; 
+//based on the user entry, respond as follows:
+//drug: seashore
+//fang or recess: skate
+//anything else: weather
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string userWord;
+
+   cout << "Enter a code word: ";                     
+   cin  >> userWord; 
+   cout << userWord;  
+   cout << endl;
+
+   if (userWord == "drug") {                
+      cout << "seashore"; 
+      cout << endl;
+   }
+   
+   else if (userWord == "recess" || userWord == "fang") {        //ELSE IF PROVIDES CONVENIENT SOLUTION        
+      cout << "skate";                                           //IN CHECKING MULTIPLE RANGES FOR A VALUE
+      cout << endl;
+   }
+
+   else if (userWord != "drug" || userWord != "recess" || userWord != "fang") {
+      cout << "weather";
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+////////////////////////////////////////////
+7.9 Problem 7.3
+//Prompt the user to enter an integer; based on the user entry, respond as follows:
+//70: snake
+//4 or 88: rose
+//anything else: rock
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   int userChoice = 0;
+
+   cout << "Enter a choice: ";                     
+   cin  >> userChoice; 
+   cout << userChoice;  
+   cout << endl;
+
+   if (userChoice == 70) {                
+      cout << "snake"; 
+      cout << endl;
+   }
+   
+   else if (userChoice == 4 || userChoice == 88) {              
+      cout << "rose";                                           
+      cout << endl;
+   }
+
+   else if (userChoice != 70 || userChoice != 4 || userChoice != 88) {
+      cout << "rock";
+      cout << endl;
+   }
+
+   return 0;
+}
+
+
+
+
+////////////////////////////////////////////
+
+////////////////////////////////////////////
