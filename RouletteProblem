@@ -1,0 +1,74 @@
+#include <iostream> //METHOD NUMBER ONE FOR ROULETTE GAME
+#include <string>   //YOU ALWAYS BET THE BOX THAT INDICATES "EVEN"
+using namespace std;
+int main() {
+    int spin;
+    cout<<"Enter the spin: "; //PROMPT USER FOR THE SPIN
+    cin>>spin;
+    cout<<spin << endl;       //USER INPUTS THE RESULT OF SPIN
+    if (spin == 0) {
+       cout<<"Zero! Everybody loses!";
+    }
+    if (spin != 0) {
+       int mod;
+       mod = spin % 2;    //MODULUS CALCULATION USED FOR REMAINDERS BECAUSE BET PLACED ON
+       if (mod == 0) { .  //RESULT OF SPIN BEING EVEN OR ODD, THE SPIN DIVIDED BY 2
+          cout <<"You win!";
+       }
+       if (mod != 0) {
+          cout<<"You lost!";
+       }       
+    }
+return 0;
+}
+
+//INPUT and OUTPUT #1
+//Enter the spin: 21
+//You lost!
+
+//INPUT and OUTPUT #2
+//Enter the spin: 22
+//You win!
+
+//INPUT and OUTPUT #3
+//Enter the spin: 0
+//Zero! Everybody loses!
+
+//ANOTHER WAY TO DO THE SAME THING
+//USE OF "ELSE"
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main () {
+    int spin;
+    cout<<"Enter the spin: ";
+    cin>>spin;
+    cout<<spin << endl;
+    if (spin == 0) {
+        cout<<"Zero! Everybody loses!";
+    }
+    else {
+        int mod;
+        mod = spin % 2;
+        if (mod == 0) {
+            cout<<"You win!";
+        }
+        if (mod != 0) {
+           cout<<"You lost!";
+        }
+    }
+    return 0;
+}
+
+//INPUT and OUTPUT #1
+//Enter the spin: 21
+//You lost!
+
+//INPUT and OUTPUT #2
+//Enter the spin: 22
+//You win!
+
+//INPUT and OUTPUT #3
+//Enter the spin: 0
+//Zero! Everybody loses!
