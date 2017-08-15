@@ -1,0 +1,574 @@
+/////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+using namespace std;
+int main () {
+   string compound = "water"; 
+   string scale = "C";
+   int temp = 211;
+   if ( (compound == "water") &&
+      ( ((temp >= 212) && (scale == "F")) ||
+         ((temp >= 100) && (scale == "C"))
+         )
+   ) {
+      cout << "Boiling";
+   }
+   else {
+      cout << "Not boiling";
+   }
+ return 0;
+}
+
+RETURN:
+Boiling.
+
+/////////////////////////////////////////////////////////////
+Exercise 5.1
+//Re-do exercise 4.1, this time using appropriate logical connectives
+//and else statements to achieve the same results.
+//"Exercise 4.1. Write a program that asks the user for a test score 
+//and determines if it is an "A", "B", etc. based on the following categories:
+//90 and above = A
+//80 up to almost 90 = B
+//70 up to almost 80 = C
+//60 up to almost 70 = D
+//anything below 60 = F"
+
+
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main() {
+   int grade;
+   cout<<"Enter a grade: ";
+   cin>>grade;
+   cout<<grade;
+   cout<<endl;
+   
+   if (grade >= 90) {
+      cout<<"A";
+   }
+   else {
+      if (grade >= 80) {
+         cout<<"B";
+      }
+      else {
+         if (grade >= 70) {
+            cout<<"C";
+         }
+         else {
+            if (grade >= 60) {
+               cout<<"D";
+            }
+            else {
+               cout<<"F";
+            }
+         }
+      }
+   } 
+ return 0;
+}
+
+/////////////////////////////////////////////////////////////
+Exercise 5.2
+//Re-do exercise 4.2, this time using appropriate logical connectives
+//and else statements to achive the same results. 
+//"Exercise 4.2. Write a program that determines a person's health status based
+//on his/her body mass index (BMI). Prompt the user for the BMI and 
+//display a message based on the answer as shown in the following chart:
+//BMI:           Result:
+//Less than 18 = Underweight
+//Between 18 and 24 = Normal weight
+//Between 25 and 30 = Overweight
+//31 or greater = Obese"
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main () {
+   int bmi;
+   
+   cout<<"Enter BMI: ";
+   cin>>bmi;
+   cout<<bmi;
+   cout<<endl;
+
+   if (bmi < 18) {
+      cout<<"Underweight";
+   }
+   else { 
+      if (bmi <= 24) {
+         cout<<"Normal";
+      }
+      else {
+         if (bmi <= 30) {
+         cout<<"Overweight";
+         }
+      else {
+         cout<<"Obese";
+      }
+   }
+}
+return 0;
+}
+
+****8.0 "More on conditional operations" in Zybooks****
+/////////////////////////////////////////////////////////////
+//8.2 C++ example: Salary caculation with branches
+//The following program calculates yearly and monthly salary given an hourly wage. The program assumes work-hours-per-week limit of 40 and work-weeks-per-year of 50.
+
+//Overtime refers to hours worked per week in excess of some weekly limit, 
+//such as 40 hours. Some companies pay time-and-a-half for overtime hours, 
+//meaning overtime hours are paid at 1.5 times the hourly wage.
+
+//Overtime pay can be calculated with pseudocode as follows 
+//(assuming a weekly limit of 40 hours):
+
+//weeklyLimit = 40     
+//if weeklyHours <= weeklyLimit
+//  weeklySalary = hourlyWage * weeklyHours
+//else
+//   overtimeHours = weeklyHours - weeklyLimit
+//   weeklySalary = hourlyWage * weeklyLimit + (overtimeHours * hourlyWage * 1.5)
+
+//1. Run the program and observe the salary earned.
+//2. Modify the program to read user input for weeklyHours. Run the program again.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+   int hourlyWage    = 0;
+   int weeklyHours   = 0;
+   int weeklySalary  = 0;
+   int overtimeHours = 0;
+   const int WEEKLY_LIMIT = 40;
+
+   cout << "Enter hourly wage: " << endl;
+   cin >> hourlyWage;
+
+   cout << "Enter weekly hours: " <<endl;
+   cin>>weeklyHours;
+
+
+   if (weeklyHours <= WEEKLY_LIMIT) {
+      weeklySalary = weeklyHours * hourlyWage;
+   }
+   else {
+      overtimeHours = weeklyHours - WEEKLY_LIMIT;
+      weeklySalary = static_cast<int>((hourlyWage * WEEKLY_LIMIT) +
+                                      (hourlyWage * overtimeHours * 1.5));
+   }
+   cout << "Weekly salary is: " << weeklySalary << endl;
+
+   return 0;
+}
+INPUT: 10 42
+OUTPUT:
+Enter hourly wage:
+Enter weekly hours:
+Weekly salary is: 430
+
+/////////////////////////////////////////////////////////////
+//8.2.2: Determine tax rate
+//Income tax is calculated based on annual income. 
+//The tax rate is determined with a tiered approach: Income above a particular tier level 
+//is taxed at that level's rate.
+
+//1. Run the program with an annual income of 120000. Note the tax rate and tax to pay.
+//2. Modify the program to add a new tier: Annual income above 50000 but less than or equal 
+//   to 100000 is taxed at the rate of 30%, and annual income above 100000 is taxed at 40%.
+//3. Run the program again with an annual income of 120000. 
+//   What is the tax rate and tax to pay now?
+//4. Run the program again with an annual income of 60000. 
+//   (Change the input area below the program.)
+//5. Challenge: What happens if a negative annual salary is entered? 
+//   Modify the program to print an error message in that case.
+
+#include <iostream>
+using namespace std;
+
+int main() {   
+   int annualSalary = 0;
+   double taxRate = 0.0;
+   int taxToPay = 0;
+
+   cout << "Enter annual salary: " << endl;
+   cin >> annualSalary;
+
+   // Determine the tax rate from the annual salary
+   // FIXME: Write code to address the challenge question above
+   if (annualSalary <= 20000) {
+      taxRate = 0.10;
+   }
+   else if (annualSalary <= 50000) {
+      taxRate = 0.20;
+   }
+   else if ((annualSalary > 50000) && (annualSalary <= 100000)) {
+           taxRate = 0.30;
+   }
+   else if (annualSalary > 100000) {
+      taxRate = 0.40;
+   }
+   else {
+      taxRate = 0.30;
+   }
+
+   taxToPay = static_cast<int>(annualSalary * taxRate);   // Truncate tax to an integer amount
+   cout << "Annual Salary: " << annualSalary << endl;
+   cout << "Tax rate: " << taxRate << endl;
+   cout << "Tax to pay: " << taxToPay << endl;
+
+   return 0;
+}
+
+
+/////////////////////////////////////////////////////////////
+//8.3 C++ example: Search for name using branches
+//A core generic top-level domain (core gTLD) name is one of the following 
+//Internet domains: .com, .net, .org, and .info (Wikipedia: gTLDs). 
+//The following program asks the user to input a name 
+//and prints whether that name is a gTLD. 
+//The program uses the equality operators ==, which evaluates to 
+//true if the two compared strings are identical.
+
+//1. Run the program, noting that the .info input name is not currently 
+//   recognized as a gTLD.
+//2. Extend the if-else statement to detect the .info domain name as a gTLD. 
+//   Run the program again.
+//3. Extend the program to allow the user to enter the name with or without 
+//   the leading dot, so .com or just com.
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;                     
+
+int main() {
+   string inputName = "";
+   string searchName = "";
+   string coreGtld1 = ".com";
+   string coreGtld2 = ".net";
+   string coreGtld3 = ".org";
+   string coreGtld4 = ".info"; //Step 2.
+   bool isCoreGtld = false;
+
+   cout << endl << "Enter a top-level domain name: " << endl;
+   cin >> inputName;
+   searchName = inputName;
+  
+   // If the user entered a name without a leading period, add one 
+   //Step 3.
+   if ((searchName.length() > 0) && (searchName.at(0) != '.')) {
+      searchName = "." + inputName;
+   }
+
+   // Determine whether the user-entered name is a gTLD
+   if (searchName == coreGtld1) {
+      isCoreGtld = true;
+   }
+   else if (searchName == coreGtld2) {
+      isCoreGtld = true;
+   }
+   else if (searchName == coreGtld3) {
+      isCoreGtld = true;
+   }
+   else if (searchName == coreGtld4) {   //Step 2.
+      isCoreGtld = true;
+   }
+   else {
+      isCoreGtld = false;
+   }
+
+   cout << "The name \"" << inputName + "\" ";
+   if (isCoreGtld) {
+      cout << "is a core gTLD." << endl;
+   }
+   else {
+      cout << "is not a core gTLD." << endl;
+   }
+
+   return 0;
+
+/////////////////////////////////////////////////////////////
+//8.4 Warm up: Text message abbreviation decoder (C++)
+// 1.) If a user's input string matches a known text message abbreviation, 
+//     output the unabbreviated form, else output: Unknown. 
+//     Support two abbreviations: LOL -- laughing out loud, 
+//     and IDK -- I don't know. (3 pts) 
+
+// 2.)  Expand to also decode these abbreviations. (4 pts)
+//      BFF -- best friends forever
+//      IMHO -- in my humble opinion
+//      TMI -- too much information
+
+#include <iostream>
+#include <string> // Note: This library is needed to use the string type
+using namespace std;
+
+int main() {
+   string userAbbreviation = "";
+   string text1 = "LOL";
+   string text2 = "IDK";
+   string text3 = "BFF";
+   string text4 = "IMHO";
+   string text5 = "TMI";
+   
+   cout << "Input an abbreviation: ";
+   cin >> userAbbreviation;
+   cout << endl;
+   
+   if (userAbbreviation == text1) {
+      cout << "laughing out loud" << endl;
+   }
+   else if (userAbbreviation == text2) {
+      cout << "I don't know" << endl;
+   }
+   else if (userAbbreviation == text3) {
+      cout << "best friends forever" << endl;
+   }
+    else if (userAbbreviation == text4) {
+      cout << "in my humble opinion" << endl;
+   }
+    else if (userAbbreviation == text4) {
+      cout << "too much information" << endl;
+   }
+   else {
+      cout << "Unknown" << endl;
+   }
+
+   return 0;
+}
+
+/////////////////////////////////////////////////////////////
+//8.5 Program: Text message decoder (C++)
+// 1.) Use getline() to get a line of user input into a string. Output the line. (3 pts) 
+//     Ex:
+//     Enter text: IDK if I'll go. It's my BFF's birthday.
+//     You entered: IDK if I'll go. It's my BFF's birthday.
+// 2.) Search the string (using find()) for common abbreviations and print a list of each
+//     found abbreviation along with its decoded meaning. (3 pts.)
+//     Ex:
+//     Enter text: IDK if I'll go. It's my BFF's birthday.
+//     You entered: IDK if I'll go. It's my BFF's birthday.
+//     BFF: best friend forever
+//     IDK: I don't know
+//          Support these abbreviations:
+//          BFF -- best friend forever
+//          IDK -- I don't know
+//          JK -- just kidding
+//          TMI -- too much information
+//          TTYL -- talk to you later
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string userInput = "";
+
+    cout << "Enter text: ";
+    getline(cin, userInput);
+    cout << endl;
+    cout << "You entered: ";
+    getline(cin, userInput);
+    cout << userInput;
+    cout << endl;
+
+    if (userInput.find("BFF") != -1 )
+    {
+        cout << "BFF: best friend forever" << endl;
+    }
+    if (userInput.find("IDK") != -1)
+    {
+        cout << "IDK: I don't know" << endl;
+    }
+    if (userInput.find("JK") != -1)
+    {
+        cout << "JK: just kidding" << endl;
+    }
+    if (userInput.find("TMI") != -1)
+    {
+        cout << "TMI: too much information" << endl;
+    }
+    if (userInput.find("TTYL") != -1)
+    {
+        cout << "TTYL: talk to you later" << endl;
+    }
+   
+
+    return 0;
+}
+
+
+
+/////////////////////////////////////////////////////////////
+//8.6.1: Program: Texy message expander (C++)
+//1. Get a line of text from the user. Output that line. (1pt)
+//2. Output the line again, this time expanding common text message
+//   abbreviations. (5pts)
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string userInput = "";
+
+    cout << "Enter text: ";
+    getline(cin, userInput);
+    cout << endl;
+    cout << "You entered: ";
+    getline(cin, userInput);
+    cout << userInput;
+    cout << endl;
+
+    if (userInput.find("BFF") != -1 )
+    {
+       userInput = userInput.replace(userInput.find("BFF"), 3, "best friend forever");
+    }
+    if (userInput.find("IDK") != -1)
+    {
+        userInput = userInput.replace(userInput.find("IDK"), 3, "I don't know");
+    }
+    if (userInput.find("JK") != -1)
+    {
+        userInput = userInput.replace(userInput.find("JK"), 2, "just kidding");
+    }
+    if (userInput.find("TMI") != -1)
+    {
+        userInput = userInput.replace(userInput.find("TMI"), 3, "too much information");
+    }
+    if (userInput.find("TTYL") != -1)
+    {
+        userInput = userInput.replace(userInput.find("TTYL"), 4, "talk to you later");
+    }
+    
+    cout << "Expanded: " << userInput << endl;
+   
+
+    return 0;
+}
+
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+using namespace std;
+int main () {
+   string compound = "water"; 
+   string scale = "C";
+   int temp = 211;
+   if ( (compound == "water") &&
+      ( ((temp >= 212) && (scale == "F")) ||
+         ((temp >= 100) && (scale == "C"))
+         )
+   ) {
+      cout << "Boiling";
+   }
+   else {
+      cout << "Not boiling";
+   }
+ return 0;
+}
+
+RETURN:
+Boiling.
+
+/////////////////////////////////////////////////////////////
+Exercise 5.1
+//Re-do exercise 4.1, this time using appropriate logical connectives
+//and else statements to achieve the same results.
+//"Exercise 4.1. Write a program that asks the user for a test score 
+//and determines if it is an "A", "B", etc. based on the following categories:
+//90 and above = A
+//80 up to almost 90 = B
+//70 up to almost 80 = C
+//60 up to almost 70 = D
+//anything below 60 = F"
+
+
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main() {
+   int grade;
+   cout<<"Enter a grade: ";
+   cin>>grade;
+   cout<<grade;
+   cout<<endl;
+   
+   if (grade >= 90) {
+      cout<<"A";
+   }
+   else {
+      if (grade >= 80) {
+         cout<<"B";
+      }
+      else {
+         if (grade >= 70) {
+            cout<<"C";
+         }
+         else {
+            if (grade >= 60) {
+               cout<<"D";
+            }
+            else {
+               cout<<"F";
+            }
+         }
+      }
+   } 
+ return 0;
+}
+
+/////////////////////////////////////////////////////////////
+Exercise 5.2
+//Re-do exercise 4.2, this time using appropriate logical connectives
+//and else statements to achive the same results. 
+//"Exercise 4.2. Write a program that determines a person's health status based
+//on his/her body mass index (BMI). Prompt the user for the BMI and 
+//display a message based on the answer as shown in the following chart:
+//BMI:           Result:
+//Less than 18 = Underweight
+//Between 18 and 24 = Normal weight
+//Between 25 and 30 = Overweight
+//31 or greater = Obese"
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main () {
+   int bmi;
+   
+   cout<<"Enter BMI: ";
+   cin>>bmi;
+   cout<<bmi;
+   cout<<endl;
+
+   if (bmi < 18) {
+      cout<<"Underweight";
+   }
+   else { 
+      if (bmi <= 24) {
+         cout<<"Normal";
+      }
+      else {
+         if (bmi <= 30) {
+         cout<<"Overweight";
+         }
+      else {
+         cout<<"Obese";
+      }
+   }
+}
+return 0;
+}
+
+
