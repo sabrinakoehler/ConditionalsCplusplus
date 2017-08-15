@@ -1,0 +1,196 @@
+#include <iostream> //CAR INSURANCE IF-ELSE EXAMPLE FROM ZYBOOKS
+using namespace std;
+
+int main() {
+   const int PRICE_LESS_THAN_25 = 4800; // For ages < 25
+   const int PRICE_25_AND_UP    = 2200; // For ages 25 and up
+   int userAge                  = 0;    // Years
+   int insurancePrice           = 0;    // Dollars
+
+   cout << "Enter age: ";
+   cin  >> userAge;
+
+   if (userAge < 25) {
+      insurancePrice = PRICE_LESS_THAN_25;
+      cout << "(executed first branch)" << endl;
+   }
+   else {
+      insurancePrice = PRICE_25_AND_UP;
+      cout << "(executed second branch)" << endl;
+   }
+
+   cout << "Annual price: $" << insurancePrice << endl;
+
+   return 0;
+}
+
+//
+#include <iostream> . //MULTIPLE IF-ELSE BRANCHES EXAMPLE FROM ZYBOOKS
+using namespace std;
+
+int main() {
+   int numYears = 0;
+
+   cout << "Enter number years married: ";
+   cin  >> numYears;
+
+   if (numYears == 1) {
+      cout << "Your first year -- great!" << endl;
+   }
+   else if (numYears == 10) {
+      cout << "A whole decade -- impressive." << endl;
+   }
+   else if (numYears == 25) {
+      cout << "Your silver anniversary -- enjoy." << endl;
+   }
+   else if (numYears == 50) {
+      cout << "Your golden anniversary -- amazing." << endl;
+   }
+   else {
+      cout << "Nothing special." << endl;
+   }
+
+   return 0;
+}
+//
+#include <iostream> //Using sequential nature of multi-branch if-else for ranges: Insurance prices.
+using namespace std; //Zybooks example problem
+
+int main() {
+   const int PRICE_16_TO_24  = 4800; // Age 16..24 (2010 U.S., carsdirect.com)
+   const int PRICE_25_TO_39  = 2350; // Age 25..39
+   const int PRICE_40_AND_UP = 2100; // Age 40 and up
+   int userAge        = 0;
+   int insurancePrice = 0;
+   
+   cout << "Enter your age: ";
+   cin  >> userAge;
+   
+   if (userAge <= 15) {                 // Age 15 and under
+      cout << "Too young." << endl;
+      insurancePrice = 0;
+   }
+   else if (userAge <= 24) {            // Age 16..24
+      insurancePrice = PRICE_16_TO_24;
+   }
+   else if (userAge <= 39) {            // Age 25..39
+      insurancePrice = PRICE_25_TO_39;
+   }
+   else {                               // Age 40 and up
+      insurancePrice = PRICE_40_AND_UP;
+   }
+   
+   cout << "Annual price: $" << insurancePrice << endl;
+   
+   return 0;
+}
+//
+#include <iostream> //Multiple distinct if-statements
+using namespace std; //Zybooks example 
+
+int main() {
+  int userAge = 0;
+
+  cout << "Enter age: ";
+  cin  >> userAge;
+
+  // Note that more than one "if" statement can execute
+  if (userAge < 16) {
+     cout << "Enjoy your early years." << endl;
+  }
+
+  if (userAge >= 16) {
+     cout << "You are old enough to drive." << endl;
+  }
+
+  if (userAge >= 18) {
+     cout << "You are old enough to vote." << endl;
+  }
+
+  if (userAge >= 25) {
+     cout << "Most car rental companies will rent to you." << endl;
+  }
+
+  if (userAge >= 35) {
+     cout << "You can run for president." << endl;
+  }
+
+  return 0;
+}
+//
+6.7 problem lab submission 6.1 in Zybooks 
+Write a program that checks for car mileage. 
+If the mileage is greater than 101401, display "Clunker!". 
+If not, display "Buy it!" (both without quotes.)
+
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main () {
+   int carMileage;
+   
+cout << "Enter the mileage: ";
+cin >> carMileage;
+cout << carMileage;
+cout << endl;
+
+   if (carMileage > 101401) {
+      cout << "Clunker!" << endl;
+   }
+   if (carMileage <= 101401) {
+      cout << "Buy it!" << endl;
+   }
+   
+return 0;
+}
+//
+6.8 problem 6.2 in Zybooks
+Write a prgram that checks for miles per gallon.
+If the mpg is less than 17, display poor MPG. If not,
+the answer is okay MPG. 
+
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main () {
+   int mpg;
+   
+cout << "Enter the mpg: ";
+cin >> mpg;
+cout << mpg;
+cout << endl;
+
+   if (mpg < 17) {
+      cout << "Poor mpg" << endl;
+   }
+   if (mpg >= 17) {
+      cout << "Okay mpg" << endl;
+   }
+   return 0;
+}
+//
+6.9 Problem 6.3 in Zybooks
+Write a program that tests if you are old enough to drink (21).
+
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main () {
+   int age;
+   
+cout << "Enter your age: ";
+cin >> age;
+cout << age;
+cout << endl;
+
+   if (age < 21) {
+      cout << "You can not drink legally." << endl;
+   }
+   if (age >= 21) {
+      cout << "You can drink legally." << endl;
+   }
+ return 0;
+} 
