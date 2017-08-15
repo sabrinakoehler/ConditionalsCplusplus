@@ -1,0 +1,168 @@
+Exercise 4.1. Write a program that asks the user for a test score 
+and determines if it is an "A", "B", etc. based on the following categories:
+90 and above = A
+80 up to almost 90 = B
+70 up to almost 80 = C
+60 up to almost 70 = D
+anything below 60 = F
+
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main () {
+   int grade;
+   cout <<"Enter a grade: ";
+   cin>>grade;
+   cout<<grade;
+   cout<<endl;
+   
+   if (grade >= 90) {
+         cout <<"A"; 
+      }
+   if (grade < 90) {
+        if (grade >= 80) {
+           cout<<"B";
+       }
+      }
+   if (grade < 80) {
+        if (grade >= 70) {
+           cout<<"C";
+       }
+     }
+   if (grade < 70) {
+        if (grade >= 60) {
+           cout<<"D";
+       }
+     }
+   if (grade < 60) {
+           cout<<"F";
+   }
+ return 0;
+}
+
+//INPUT and OUTPUT #1:
+//Enter a grade: 90
+//A
+
+//INPUT and OUTPUT #2:
+//Enter a grade: 80
+//B
+
+//INPUT and OUTPUT #3:
+//Enter a grade: 70
+//C
+
+//INPUT and OUTPUT #4:
+//Enter a grade: 60
+//D
+
+//INPUT and OUTPUT #5:
+//Enter a grade: 59
+//F
+///////////////////////
+**** IN ZYBOOKS THE CODE HAD TO BE WRITTEN THIS WAY TO ALLOW FOR GRADE DECIMAL POINT ****
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main() {
+   double userScore = 00.0000;
+   
+   cout << "What was your score? ";
+   cin >> userScore;
+   cout << userScore;
+   cout << endl;
+   
+   if (userScore >= 90) {
+         cout << "Your letter grade is: A" << endl;
+      }
+   if (userScore <= 89.9999) {
+        if (userScore >= 80) {
+           cout<< "Your letter grade is: B" << endl;
+        }
+      }
+   if (userScore <= 79.9999) {
+        if (userScore >= 70) {
+           cout<< "Your letter grade is: C" << endl;     
+        }
+       }
+   if (userScore <= 69.9999) {
+        if (userScore == 60) {
+           cout<< "Your letter grade is: D" << endl;
+         }
+       }
+   if (userScore <= 59.9999) {
+         cout<< "Your letter grade is: F" << endl;
+      }
+ return 0;
+}
+
+
+/////////////
+Exercise 4.2. Write a program that determines a person's health status based
+on his/her body mass index (BMI). Prompt the user for the BMI and 
+display a message based on the answer as shown in the following chart:
+BMI:           Result:
+Less than 18 = Underweight
+Between 18 and 24 = Normal weight
+Between 25 and 30 = Overweight
+31 or greater = Obese
+
+#include <iostream> 
+#include <string>
+using namespace std;
+
+int main () {
+   int bmi;
+   cout <<"Enter BMI: ";
+   cin>>bmi;
+   cout<<bmi;
+   cout<<endl;
+
+   if (bmi < 18) {
+       cout<<"Underweight";
+   }
+   
+   if (bmi >= 18) {
+       if (bmi <= 24) {
+           cout<<"Normal";
+       }
+    }
+    
+    if (bmi >= 25) {
+        if (bmi <= 30) {
+            cout<<"Overweight";
+        }
+    }
+    
+    if (bmi >= 31) {
+        cout<<"Obese";
+    }
+
+return 0;
+}
+
+//INPUT and OUTPUT #1:
+//Enter BMI:17
+//Underweight
+
+//INPUT and OUTPUT #2:
+//Enter BMI: 18
+//Normal
+
+//INPUT and OUTPUT #3:
+//Enter BMI: 24
+//Normal
+
+//INPUT and OUTPUT #4:
+//Enter BMI:25
+//Overweight
+
+//INPUT and OUTPUT #5:
+//Enter BMI: 30
+//Overweight
+
+//INPUT and OUTPUT #6:
+//Enter BMI:31
+//Obese
