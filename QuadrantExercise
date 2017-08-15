@@ -1,0 +1,50 @@
+#include <iostream> //NESTED CODE BLOCKS EXAMPLE PROGRAM
+#include <string>
+using namespace std;
+int main () {
+   int x, y;
+   cout <<"Enter x: ";
+   cin>>x;
+   cout<<x <<endl;
+   cout<<"Enter y: ";
+   cin>>y;
+   cout<<y << endl; //To save space in program, can link several cout statements together. 
+   if (x > 0) {
+      if (y > 0) {
+         cout << "Quadrant I"; //For Quadrant I line to execute, both conditions x > 0 and y > 0 have to be true. 
+      }
+      if (y < 0) {
+         cout<<"Quadrant IV";
+      }
+   }
+   if (x < 0) {
+      if (y > 0) {
+         cout << "Quadrant II";
+      }
+      if (y < 0) {
+         cout<<"Quadrant III";
+      }
+   }
+   return 0;
+}
+
+
+//INPUTS and OUTUT RUN#1
+//Enter x: 1
+//Enter y: 1
+//Quadrant I
+
+//INPUTS and OUTUT RUN#2
+//Enter x: -1
+//Enter y: 1
+//Quadrant III
+
+//INPUTS and OUTUT RUN#3
+//Enter x: -1
+//Enter y: -1
+//Quadrant III
+
+//INPUTS and OUTUT RUN#4
+//Enter x: 1
+//Enter y: -11
+//Quadrant IV
